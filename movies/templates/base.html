@@ -1,3 +1,4 @@
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  {% bootstrap_css %}
 </head>
 <body>
   <a href="{% url 'movies:index' %}">홈</a>
   <a href="{% url 'movies:create' %}">글쓰기</a>
-  {% block body %}
-  {% endblock %}
+  <a href="{% url 'movies:create_model_form' %}">글쓰기(모델폼)</a>
+  <div class="container">
+    {% block body %}
+    {% endblock %}
+  </div>
+  {% bootstrap_javascript jquery='full' %}
 </body>
 </html>

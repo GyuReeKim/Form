@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block body %}
-  <h1>create</h1>
+  {% if request.resolver_match.url_name == "create_model_form" %}
+    <h1>create</h1>
+  {% else %}
+    <h1>update</h1>
+  {% endif %}
   <form action="" method="post">
     {% csrf_token %}
-    {{form.as_p}}
+    <!-- {{form.as_p}} -->
+    {% bootstrap_form form %}
+    {% buttons submit="제출" %}{% endbuttons %}
     <!-- {{form.title.label_tag}}
     {{form.title}} -->
-    <input type="submit">
+    <!-- <input type="submit"> -->
   </form>
 {% endblock %}
