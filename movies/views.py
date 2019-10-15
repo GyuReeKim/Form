@@ -50,7 +50,7 @@ def create(request):
     return render(request, 'form.html', context)
 
 def detail(request, id):
-    # movie = Movie.objects.get(id=id)
+    # movie = Movie.objects.get(id=id) 
     # 사용자가 찾을수 없는 정보에 접근할 때 404페이지를 보여준다.
     movie = get_object_or_404(Movie, id=id)
     comment_form = CommentModelForm()
