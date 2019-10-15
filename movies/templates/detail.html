@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+  <h1>detail</h1>
+  <h3>{{movie.title}}({{movie.title_en}})</h3>
+  <h4>{{movie.audience}} | {{movie.open_date}} | {{movie.genre}} | {{movie.watch_grade}} | {{movie.score}}</h4>
+  <h5>{{movie.poster_url}}</h5>
+  <h5>{{movie.description}}</h5>
+  
+  <!-- comment안의 내용을 html에서 보이지 않도록 한다. -->
+  {% comment%}
+    <a href="{% url 'movies:delete' movie.id %}">삭제</a>
+  {% endcomment %}
+  
+  <form action="{% url 'movies:delete' movie.id %}" method="post">
+    {% csrf_token %}
+      <input type="submit" value="삭제(post)">
+  </form>
+  <a href="{% url 'movies:update' movie.id %}">수정</a>
+{% endblock %}
